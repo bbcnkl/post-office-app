@@ -1,0 +1,33 @@
+version: '3.6'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile-backend
+    container_name: backend-container
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_URI: mongodb://post:post@localhost:27017/post_office
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile-frontend
+    container_name: frontend-container
+    ports:
+      - "4201:80"
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb-container
+    ports:
+      - "27018:27017"
+    volumes:
+      - ./mongo-data:/data/db
+
+volumes:
+  mongo-data:
