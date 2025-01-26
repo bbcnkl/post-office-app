@@ -1,0 +1,25 @@
+@use "../../../styles/mixins" as *;
+@include table();
+@include headerContainer();
+
+.filter-container {
+  margin-bottom: 10px;
+  .filter-row {
+    display: flex;
+    mat-form-field {
+      flex: 1 1 0px;
+    }
+  }
+  .button-group-container {
+    display: inline-block;
+    mat-button-toggle-group {
+      margin: 5px;
+    }
+  }
+  .select-zip-code {
+    margin-left: 15px;
+  }
+  mat-label {
+    margin-right: 0px 7px;
+  }
+}

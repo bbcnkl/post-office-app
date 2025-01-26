@@ -1,0 +1,7 @@
+@use "../../../styles/mixins" as *;
+@include table();
+@include headerContainer();
+
+.mat-column-action {
+  width: 180px;
+}

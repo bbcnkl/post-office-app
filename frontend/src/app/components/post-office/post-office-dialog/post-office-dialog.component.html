@@ -1,0 +1,18 @@
+
+<h2 mat-dialog-title>Add Post Office</h2>
+<mat-dialog-content>
+  <form [formGroup]="postOfficeForm">
+    <mat-form-field class="mod-full-width">
+      <mat-label>Location</mat-label>
+      <input matInput formControlName="location" />
+    </mat-form-field>
+    <mat-form-field class="mod-full-width">
+      <mat-label>Zip Code</mat-label>
+      <input matInput formControlName="zipCode" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button (click)="onSave()" [disabled]="postOfficeForm.invalid">Save</button>
+</mat-dialog-actions>

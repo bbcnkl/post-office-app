@@ -1,0 +1,22 @@
+@use '@angular/material' as mat;
+@use 'styles/global' as *;
+
+@include mat.elevation-classes();
+@include mat.app-background();
+$post-app-primary: mat.m2-define-palette(mat.$m2-indigo-palette);
+$post-app-accent: mat.m2-define-palette(mat.$m2-blue-palette, A200, A100, A400);
+$post-app-warn: mat.m2-define-palette(mat.$m2-red-palette);
+
+$post-app-theme: mat.m2-define-light-theme((
+  color: (
+    primary: $post-app-primary,
+    accent: $post-app-accent,
+    warn: $post-app-warn,
+  ),
+  typography: mat.m2-define-typography-config(),
+  density: 0
+));
+@include mat.all-component-themes($post-app-theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

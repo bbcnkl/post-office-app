@@ -1,0 +1,59 @@
+
+<h2 mat-dialog-title>Add Shipment</h2>
+<mat-dialog-content>
+  <form [formGroup]="shipmentForm">
+
+    <mat-form-field appearance="fill"  class="mod-full-width">
+      <mat-label>Origin Post Office</mat-label>
+      <mat-select formControlName="originPostOffice">
+        @for (postOffice of postOffices(); track postOffice) {
+        <mat-option [value]="postOffice.zipCode">
+          {{ postOffice.location }} - {{ postOffice.zipCode }}
+        </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill"  class="mod-full-width">
+      <mat-label>Destination Post Office</mat-label>
+      <mat-select formControlName="destinationPostOffice">
+        @for (postOffice of postOffices(); track postOffice) {
+        <mat-option [value]="postOffice.zipCode">
+          {{ postOffice.location }} - {{ postOffice.zipCode }}
+        </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <div class="button-group-container">
+      <mat-label>Type</mat-label>
+      <mat-button-toggle-group formControlName="type" appearance="standard">
+        <mat-button-toggle *ngFor="let type of shipmentTypes" [value]="type">
+          {{ type | formatEnum }}
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+    <div class="button-group-container">
+      <mat-label>Status</mat-label>
+      <mat-button-toggle-group formControlName="status" appearance="standard">
+        <mat-button-toggle *ngFor="let status of shipmentStatuses" [value]="status">
+          {{ status | formatEnum }}
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+    <div class="button-group-container">
+      <mat-label>Weight</mat-label>
+      <mat-button-toggle-group formControlName="weight" appearance="standard">
+        <mat-button-toggle *ngFor="let weight of shipmentWeights" [value]="weight">
+          {{ weight | formatEnum }}
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button (click)="onSave()" [disabled]="shipmentForm.invalid">Save</button>
+</mat-dialog-actions>

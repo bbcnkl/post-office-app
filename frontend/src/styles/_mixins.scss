@@ -1,0 +1,16 @@
+@mixin headerContainer {
+  .header-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@mixin table() {
+  .table {
+    margin-top: 20px;
+    button, a {
+      margin-right: 7px;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+export enum ShipmentWeight {
+  LESS_THAN_1KG = 'LESS_THAN_1KG',
+  BETWEEN_1KG_AND_5KG = 'BETWEEN_1KG_AND_5KG',
+  MORE_THAN_5KG = 'MORE_THAN_5KG',
+}
