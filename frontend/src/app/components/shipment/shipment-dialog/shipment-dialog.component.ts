@@ -30,6 +30,7 @@ import { FormatEnumPipe } from '../../../pipes/format-enum.pipe';
 import { PostOffice } from '../../../models/post-office.model';
 import { PostOfficeService } from '../../../services/post-office.service';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-shipment-dialog',
@@ -53,7 +54,7 @@ import { MatSelectModule } from '@angular/material/select';
 export class ShipmentDialogComponent implements OnInit {
   readonly fb = inject(FormBuilder);
   readonly dialogRef = inject(MatDialogRef<ShipmentDialogComponent>);
-
+  readonly snackBar = inject(MatSnackBar);
   readonly data = inject<Shipment>(MAT_DIALOG_DATA);
   shipmentForm!: FormGroup;
   readonly shipmentTypes = Object.values(ShipmentType);
@@ -109,11 +110,10 @@ export class ShipmentDialogComponent implements OnInit {
       const postOffices = await this.postOfficeService.loadAllPostOffices();
       this.postOffices.set(postOffices?.list);
     } catch (err) {
-      // this.messageService.showMessage(
-      //   `Error loading courses!`,
-      //   "error"
-      // );
-      // console.error(err);
+      this.snackBar.open('Error loading Post Offices ', '', {
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom',
+      });
     }
   }
 

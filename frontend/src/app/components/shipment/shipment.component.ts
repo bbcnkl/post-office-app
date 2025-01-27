@@ -185,7 +185,12 @@ export class ShipmentComponent implements OnInit, OnDestroy {
       const shipments = await this.shipmentService.loadAllShipments(filters);
       this.dataSource$.next(shipments.list);
       this.totalShipments = shipments.total;
-    } catch (err) {}
+    } catch (err) {
+      this.snackBar.open('Error loading shipments', '', {
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom',
+      });
+    }
   }
 
   async createShipment(shipment: Shipment) {
